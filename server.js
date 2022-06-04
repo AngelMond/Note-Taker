@@ -4,16 +4,15 @@ const fs = require('fs');
 const uuid = require('./Develop/helpers/uuid');
 const app = express();
 
-
+//port through which my server will listen
 const PORT = 3001;
 
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
 app.use(express.static('develop/public'));
 
-//Get the notes.html
+//Load notes.html when click Get Started in the Home Page
 app.get('/notes', (req, res)=>{
     res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
 });
@@ -25,16 +24,14 @@ app.get('/api/notes', (req, res)=>{
 
 
 
-// crear metodo POST que responda a la ruta "/api/notes" que debe de recibir una nueva nota guardada en el body
-//   y agregarla al archivo "db.json" y retornar esa nueva nota al usuario en el navegador
-
+//POST to create a new note
 app.post('/api/notes', (req, res)=>{
     console.info(`${req.method} request received `);
 
     //Destructurando la Info que envia el usuario
     const {title, text} = req.body;
 
-    //If recive title and text through the body, then, create a new object with that title, text recived and add a unique id
+    //If recive title and text through the body, then, create a new object with that title, text recived and add a unique id to that note
     if(title && text ){
 
         const newNote = {
@@ -76,6 +73,7 @@ app.post('/api/notes', (req, res)=>{
    
 });
 
+//DELETE to delete a note
 app.delete('/api/notes/:id', (req, res)=>{
     console.info(`${req.method} request received `);
 
