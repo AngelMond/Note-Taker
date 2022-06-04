@@ -101,8 +101,10 @@ app.delete('/api/notes/:id', (req, res)=>{
                     }
                 });       
 
-               //Delete the index from the db.json
-               parsedData.splice(indexParseData);
+                
+                //Delete just one dingle index from the db.json
+                parsedData.splice(indexParseData, 1);
+                
                 
                //Update the new db.json without the index deleted
                 fs.writeFile('develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
