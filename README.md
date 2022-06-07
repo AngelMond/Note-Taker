@@ -57,13 +57,13 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 !['Note taker home page'](./assets/screenshots/noteTaker.jpg)
 
 # Create and save a new note
-!['Note taker home page'](./assets/screenshots/saveNote.jpg.jpg)
+!['Note taker home page'](./assets/screenshots/saveNote.jpg)
 
 # View the created note
-!['Note taker home page'](./assets/screenshots/viewNote.jpg.jpg)
+!['Note taker home page'](./assets/screenshots/viewNote.jpg)
 
 # Delete your note
-!['Note taker home page'](./assets/screenshots/deleteNote.jpg.jpg)
+!['Note taker home page'](./assets/screenshots/deleteNote.jpg)
 
 # Link to deployed app!
 * Check the app for yourself! 
