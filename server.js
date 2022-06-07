@@ -5,19 +5,24 @@ const uuid = require('./Develop/helpers/uuid');
 const app = express();
 
 
+//port through which my server will listen
+let PORT = process.env.PORT || 8080;
+
+
+
 //Middlewares
-app.use(express.json());
+app.use(express.static('Develop/public'));
 app.use(express.urlencoded({extended: false}));
-app.use(express.static('develop/public'));
+app.use(express.json());
 
 //Load notes.html when click Get Started in the Home Page
 app.get('/notes', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, 'Develop/public', 'notes.html'));
 });
 
 //Get all the notes created
 app.get('/api/notes', (req, res)=>{
-     res.sendFile(path.join(__dirname, 'develop/db/db.json'));
+     res.sendFile(path.join(__dirname, 'Develop/db/db.json'));
 });
 
 
@@ -39,7 +44,7 @@ app.post('/api/notes', (req, res)=>{
         }
         
        //Start reading db.json file converting the file into a JSON  and then append the new note into my db.json file
-        fs.readFile('develop/db/db.json', 'utf8', (err, data)=>{
+        fs.readFile('Develop/db/db.json', 'utf8', (err, data)=>{
             if(err){
                 console.log('Ups! There was an error trying to read db.json')
             }else{
@@ -51,14 +56,14 @@ app.post('/api/notes', (req, res)=>{
                 parsedData.push(newNote);
 
                 //Writing and saving new note to my db.json file
-                fs.writeFile('develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
+                fs.writeFile('Develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
                     err ? console.log("Ups! We couldn't update db.json with the new note :(" )
                     : console.log("New note added successfully :)");
                 });
             }
         });
 
-        res.status(200).sendFile(path.join(__dirname, 'develop/db/db.json'));
+        res.status(200).sendFile(path.join(__dirname, 'Develop/db/db.json'));
     }else {
         res.status(500).json('Error in creating a new note');
     }
@@ -75,7 +80,7 @@ app.delete('/api/notes/:id', (req, res)=>{
     
     if(id){
 
-        fs.readFile('develop/db/db.json', 'utf8', (err, data)=>{
+        fs.readFile('Develop/db/db.json', 'utf8', (err, data)=>{
             if(err){
                 console.log('Ups! There was an error trying to read db.json in your DELETE request');
             }else{
@@ -97,7 +102,7 @@ app.delete('/api/notes/:id', (req, res)=>{
                 parsedData.splice(indexParseData, 1);
                 
                //Update the new db.json without the index deleted
-                fs.writeFile('develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
+                fs.writeFile('Develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
                     err ? console.log("Ups! We couldn't update db.json with the new note :(" )
                     : console.log("Note deleted successfully :)");
                 }
@@ -105,18 +110,16 @@ app.delete('/api/notes/:id', (req, res)=>{
             }
         });
 
-        res.status(200).sendFile(path.join(__dirname, 'develop/db/db.json'));
+        res.status(200).sendFile(path.join(__dirname, 'Develop/db/db.json'));
     }
 });
 
 
 app.get('/',  (req, res)=>{
-    res.sendFile(path.join('develop/public/index.html'));
+    res.sendFile(path.join('Develop/public/index.html'));
 });
 
 
-//port through which my server will listen
-let PORT = process.env.PORT || 8080;
 
 app.listen(PORT, ()=>{
     console.log(`Port ${PORT} is listening`);
