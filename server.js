@@ -8,7 +8,7 @@ const app = express();
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(express.static('public'));
+app.use(express.static('develop/public'));
 
 //Load notes.html when click Get Started in the Home Page
 app.get('/notes', async (req, res)=>{
