@@ -111,7 +111,7 @@ app.delete('/api/notes/:id', (req, res)=>{
 
 
 app.get('*', async (req, res)=>{
-    await res.sendFile(path.join(__dirname, 'develop/public/index.html'));
+    await res.sendFile(path.join('develop/public/index.html'));
 });
 
 
