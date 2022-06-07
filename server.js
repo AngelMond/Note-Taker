@@ -11,13 +11,13 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static('develop/public'));
 
 //Load notes.html when click Get Started in the Home Page
-app.get('/notes', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
+app.get('/notes', async (req, res)=>{
+   await res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
 });
 
 //Get all the notes created
-app.get('/api/notes', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'develop/db/db.json'));
+app.get('/api/notes', async (req, res)=>{
+    await res.sendFile(path.join(__dirname, 'develop/db/db.json'));
 });
 
 
@@ -110,8 +110,8 @@ app.delete('/api/notes/:id', (req, res)=>{
 });
 
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'develop/public/index.html'));
+app.get('*', async (req, res)=>{
+    await res.sendFile(path.join(__dirname, 'develop/public/index.html'));
 });
 
 
