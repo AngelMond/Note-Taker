@@ -39,11 +39,7 @@ app.post('/api/notes', (req, res)=>{
             text,
             id: uuid(),
         }
-        //This response is only for me
-        const response = {
-            status: 'succes',
-            body: newNote,
-        }
+        
        //Start reading db.json file converting the file into a JSON  and then append the new note into my db.json file
         fs.readFile('develop/db/db.json', 'utf8', (err, data)=>{
             if(err){
@@ -64,8 +60,7 @@ app.post('/api/notes', (req, res)=>{
             }
         });
 
-        res.sendFile(path.join(__dirname, 'develop/db/db.json'));
-        res.status(201).json(response);
+        res.status(200).sendFile(path.join(__dirname, 'develop/db/db.json'));
     }else {
         res.status(500).json('Error in creating a new note');
     }
@@ -77,6 +72,7 @@ app.post('/api/notes', (req, res)=>{
 app.delete('/api/notes/:id', (req, res)=>{
     console.info(`${req.method} request received `);
 
+    //Destructuring id
     const {id} = req.params;
     
     if(id){
@@ -99,10 +95,8 @@ app.delete('/api/notes/:id', (req, res)=>{
                     }
                 });       
 
-                
-                //Delete just one dingle index from the db.json
+                //Delete just one single index from the db.json
                 parsedData.splice(indexParseData, 1);
-                
                 
                //Update the new db.json without the index deleted
                 fs.writeFile('develop/db/db.json', JSON.stringify(parsedData, null, 4), (err)=>{
