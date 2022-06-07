@@ -5,7 +5,7 @@ const uuid = require('./Develop/helpers/uuid');
 const app = express();
 
 //port through which my server will listen
-const PORT = 3001;
+const PORT = process.env.PORT || 8080;
 
 //Middlewares
 app.use(express.json());
