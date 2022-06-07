@@ -22,6 +22,6 @@ Every time the user create a Note, this will have a unique ID and the Note will 
 
 # Link to deployed app!
 * Check the app for yourself! 
-<div><a href="" target="_blank">Click here TO GO!</a></div>
+<div><a href="https://blooming-anchorage-79721.herokuapp.com/" target="_blank">Click here TO GO TO LIVE WEB!</a></div>
 
 # THANKS FOR VISITING MY PROJECT!
