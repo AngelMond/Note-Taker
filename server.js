@@ -110,7 +110,7 @@ app.delete('/api/notes/:id', (req, res)=>{
 });
 
 
-app.get('*',  (req, res)=>{
+app.get('/',  (req, res)=>{
     res.sendFile(path.join('develop/public/index.html'));
 });
 
