@@ -4,8 +4,6 @@ const fs = require('fs');
 const uuid = require('./Develop/helpers/uuid');
 const app = express();
 
-//port through which my server will listen
-const PORT = process.env.PORT || 8080;
 
 //Middlewares
 app.use(express.json());
@@ -115,6 +113,10 @@ app.delete('/api/notes/:id', (req, res)=>{
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, 'develop/public/index.html'));
 });
+
+
+//port through which my server will listen
+let PORT = process.env.PORT || 8080;
 
 app.listen(PORT, ()=>{
     console.log(`Port ${PORT} is listening`);
