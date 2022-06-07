@@ -13,6 +13,7 @@ Every time the user create a Note, this will have a unique ID and the Note will 
 <img src="https://img.shields.io/badge/-HTML-e34f26?logo=html5&logoColor=fff">
 <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=fff">
 <img src="https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=fff">
+<img src="https://img.shields.io/badge/-Bootstrap-7952B3?logo=bootstrap&logoColor=fff">
 <img src="https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=fff">
 <img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=fff">
 </div>
